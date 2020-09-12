@@ -1,35 +1,39 @@
+# ver1.0.0 / create_Developer
 module JwtAuthenticator
-  require 'jwt'
+  require "jwt"
 
   SECRET_KEY_BASE = ENV['SECRET_KEY_BASE']
 
-  def jwt_auth
-    render json: {err_msg: '承認情報が不足しています。'} and return if request.headers['Authorization'].blank?
-    encode_token = request.headers['Authorization'].split('Token ').last
-    data = decode(encoded_token).symbolize_keys
-    render json: {err_msg:  "認証できません。"} and return if data == true
+  def jwt
 
-    case 
-    when data[:ownid]
-      @jwt_data = {
-        ownid: data[:ownid],
-        own_email: data[:own_email],
-      }
+      render json: {err_msg: '承認情報が不足しています。'} and return if request.headers['Authorization'].blank?
+      encoded_token = request.headers['Authorization']
       debugger
-    end
-    render json: {err_msg: "認証できません。"} and return if @jwt_data.blank?
-    @jwt_data
+      data = decode(encoded_token).symbolize_keys
+      render json: {err_msg:  "認証できません。"} and return if data == true
+      case 
+      when data[:ownid]
+        @jwt_data = {
+          ownid: data[:ownid],
+          own_email: data[:own_email],
+          owner_judge: data[:owner_judge],
+        }
+      end
+      render json: {err_msg: "認証できません。"} and return if @jwt_data.blank?
+      @jwt_data
+
   end
 
   # 暗号化処理
   def owner_encode(owner)
-    expires_in = 1.month.from_now.to_i # 再ログインを必要とするまでの期間を１ヶ月とした場合
-    preload = { 
+    expires_in = 6.month.from_now.to_i # 再ログインを必要とするまでの期間を１ヶ月とした場合
+    payload = { 
       ownid: owner.id, 
-      owner_email: owner.own_email,
+      own_email: owner.own_email,
+      owner_judge: owner.owner_judge,
       exp: expires_in,
     }
-    JWT.encode(preload, SECRET_KEY_BASE, 'HS256')
+    JWT.encode(payload, SECRET_KEY_BASE, 'HS256')
   end
 
   def decode(encoded_token)

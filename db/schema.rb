@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 2020_09_06_160542) do
   end
 
   create_table "owners", force: :cascade do |t|
+    t.string "own_name"
     t.string "own_email"
     t.string "password_digest"
+    t.boolean "owner_judge"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

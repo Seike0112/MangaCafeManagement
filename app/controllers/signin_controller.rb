@@ -1,6 +1,5 @@
+# ver1.0.0 / create_Developer
 class SigninController < ApplicationController
-
-  include JwtAuthenticator
 
 def info
   begin

@@ -1,5 +1,8 @@
 class Admin < ApplicationRecord
 
+  belongs_to :owner, optional: true
+  has_many :users
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :ad_email, presence: true, format: { with: VALID_EMAIL_REGEX }
 

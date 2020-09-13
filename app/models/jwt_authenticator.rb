@@ -25,6 +25,12 @@ module JwtAuthenticator
           admin_judge: data[:admin_judge],
           own_id: data[:own_id],
         }
+      when data[:usid]
+        @jwt_data = {
+          usid: data[:usid],
+          us_email: data[:us_email],
+          ad_id: data[:ad_id],
+        }
       end
       render json: {err_msg: "認証できません。"} and return if @jwt_data.blank?
 
@@ -53,6 +59,17 @@ module JwtAuthenticator
       ad_email: admin.ad_email,
       admin_judge: admin.admin_judge,
       own_id: admin.owner_id,
+      exp: expires_in,
+    }
+    JWT.encode(payload, SECRET_KEY_BASE, 'HS256')
+  end
+
+  def user_encode(user)
+    expires_in = 6.month.from_now.to_i # 再ログインを必要とするまでの期間を１ヶ月とした場合
+    payload = { 
+      usid: user.id, 
+      us_email: user.us_email,
+      ad_id: user.admin_id,
       exp: expires_in,
     }
     JWT.encode(payload, SECRET_KEY_BASE, 'HS256')

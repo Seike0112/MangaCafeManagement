@@ -13,6 +13,9 @@ def info
     when params[:ad_email]
       admin = Admin.find_by(ad_email: params[:ad_email])
       jwt_token = admin_encode(admin) if admin&.authenticate(params[:password])
+    when params[:us_email]
+      user = User.find_by(us_email: params[:us_email])
+      jwt_token = user_encode(user) if user&.authenticate(params[:password])
     end
     
     if jwt_token.present?

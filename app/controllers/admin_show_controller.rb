@@ -6,7 +6,11 @@ class AdminShowController < ApplicationController
     begin
 
       admin = Admin.find_by(id: @jwt_data[:adid])
-      render json: {admin: admin}
+      if admin.blank?
+        render json: {err_msg: "店舗管理者情報が存在しません。"}
+      else
+        render json: {admin: admin} 
+      end
 
     rescue => e
         

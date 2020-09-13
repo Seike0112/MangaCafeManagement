@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   #　店舗管理アカウント情報閲覧ページ
   post '/admin_show', to: 'admin_show#index'
+  #　店舗管理アカウント情報作成ページ
+  post '/admin_user_new', to: 'admin_user_new#index'
 
 end

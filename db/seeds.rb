@@ -15,3 +15,18 @@ Admin.create!(
   owner_id: 1
 )
 puts '快活用大森支店アカウントを作成しました。'
+
+User.create!(
+  us_full_name: '田中　太郎',
+  us_email: 'taro@email.com',
+  password: 'password',
+  us_kana: 'たなか　たろう',
+  us_job: '会社員',
+  us_age: '25',
+  us_sex: '男',
+  us_phone: '000-0000-0000',
+  us_address: '東京都品川区南大井',
+  us_post_number: '000-0000',
+  admin_id: 1
+)
+puts 'ユーザーアカウントを作成しました。'

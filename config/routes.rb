@@ -1,3 +1,19 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # ver1.0.0 / create_Developer
+  # ログイン
+  post '/sign_in', to: 'signin#info'
+
+  #　開発者専用情報閲覧ページ
+  post '/owner_show', to: 'owner_show#index'
+  #　開発者専用店舗情報一覧ページ
+  post '/owner_admin_index', to: 'owner_admin_index#index'
+  #　開発者専用店舗作成ページ
+  post '/owner_admin_new', to: 'owner_admin_new#index'
+  #　開発者専用店舗詳細編集ページ
+  post '/owner_admin_edit', to: 'owner_admin_edit#index'
+
+  #　店舗管理アカウント情報閲覧ページ
+  post '/admin_show', to: 'admin_show#index'
+
 end

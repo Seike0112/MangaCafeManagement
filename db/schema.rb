@@ -13,8 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_09_06_160542) do
 
   create_table "admins", force: :cascade do |t|
+    t.string "ad_name"
     t.string "ad_email"
-    t.string "ad_password"
+    t.string "password_digest"
+    t.string "ad_description"
+    t.boolean "admin_judge"
     t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

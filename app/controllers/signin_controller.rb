@@ -10,6 +10,9 @@ def info
     when params[:own_email]
       owner = Owner.find_by(own_email: params[:own_email])
       jwt_token = owner_encode(owner) if owner&.authenticate(params[:password])
+    when params[:ad_email]
+      admin = Admin.find_by(ad_email: params[:ad_email])
+      jwt_token = admin_encode(admin) if admin&.authenticate(params[:password])
     end
     
     if jwt_token.present?

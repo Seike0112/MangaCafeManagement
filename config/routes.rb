@@ -4,7 +4,16 @@ Rails.application.routes.draw do
   # ログイン
   post '/sign_in', to: 'signin#info'
 
-  #　開発者専用ページ
+  #　開発者専用情報閲覧ページ
   post '/owner_show', to: 'owner_show#index'
+  #　開発者専用店舗情報一覧ページ
+  post '/owner_admin_index', to: 'owner_admin_index#index'
+  #　開発者専用店舗作成ページ
+  post '/owner_admin_new', to: 'owner_admin_new#index'
+  #　開発者専用店舗詳細編集ページ
+  post '/owner_admin_edit', to: 'owner_admin_edit#index'
+
+  #　店舗管理アカウント情報閲覧ページ
+  post '/admin_show', to: 'admin_show#index'
 
 end

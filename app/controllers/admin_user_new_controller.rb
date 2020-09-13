@@ -2,7 +2,6 @@ class AdminUserNewController < ApplicationController
 
   before_action :jwt_auth
 
-  # 開発者情報編集
   def index
     begin
 
@@ -40,6 +39,7 @@ class AdminUserNewController < ApplicationController
           us_phone: params[:us_phone],
           us_address: params[:us_address],
           us_post_number: params[:us_post_number],
+          admin_id: admin.id,
         })
         user.save!
 

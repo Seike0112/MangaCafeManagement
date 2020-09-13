@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bo_name: MyString
+  bo_type: MyString
+  bo_price: MyString
+  bo_remarks: MyString
+  admins: one
+
+two:
+  bo_name: MyString
+  bo_type: MyString
+  bo_price: MyString
+  bo_remarks: MyString
+  admins: two

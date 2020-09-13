@@ -30,3 +30,12 @@ User.create!(
   admin_id: 1
 )
 puts 'ユーザーアカウントを作成しました。'
+
+Booth.create!(
+  bo_name: '個室ブース',
+  bo_type: 'フラット席',
+  bo_price: '350',
+  bo_remarks: '座席とフラット席と選べます。',
+  admin_id: 1,
+)
+puts 'ブースを作成しました。'

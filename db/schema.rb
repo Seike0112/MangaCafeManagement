@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_073329) do
+ActiveRecord::Schema.define(version: 2020_09_13_150054) do
 
   create_table "admins", force: :cascade do |t|
     t.string "ad_name"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2020_09_13_073329) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_admins_on_owner_id"
+  end
+
+  create_table "booths", force: :cascade do |t|
+    t.string "bo_name"
+    t.string "bo_type"
+    t.string "bo_price"
+    t.string "bo_remarks"
+    t.integer "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_booths_on_admin_id"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -52,5 +63,6 @@ ActiveRecord::Schema.define(version: 2020_09_13_073329) do
   end
 
   add_foreign_key "admins", "owners"
+  add_foreign_key "booths", "admins"
   add_foreign_key "users", "admins"
 end

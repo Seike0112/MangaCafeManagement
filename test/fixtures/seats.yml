@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  se_number: MyString
+  references: 
+
+two:
+  se_number: MyString
+  references: 

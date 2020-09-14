@@ -31,4 +31,13 @@ Rails.application.routes.draw do
   #店舗管理アカウント用ブース情報閲覧ページ
   post '/admin_booth_show', to: 'admin_booth_show#index'
 
+  #　店舗管理アカウント用シート一覧情報閲覧ページ
+  post '/admin_seat_index', to: 'admin_seat_index#index'
+  #店舗管理アカウント用シート情報編集ページ
+  post '/admin_seat_edit', to: 'admin_seat_edit#index'
+  #店舗管理アカウント用シート情報作成ページ
+  post '/admin_seat_new', to: 'admin_seat_new#index'
+  #店舗管理アカウント用シート情報閲覧ページ
+  post '/admin_seat_show', to: 'admin_seat_show#index'
+
 end

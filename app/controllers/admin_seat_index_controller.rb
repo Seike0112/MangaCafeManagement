@@ -1,4 +1,4 @@
-class AdminBoothIndexController < ApplicationController
+class AdminSeatIndexController < ApplicationController
 
   before_action :jwt_auth
 
@@ -10,9 +10,9 @@ class AdminBoothIndexController < ApplicationController
       admin = Admin.find_by(id: @jwt_data[:adid])
       render json: {err_msg: ['店舗管理者情報が存在しません。']} and return if admin.blank?
 
-      booths = Booth.all
-      if booths.present?
-        render json: {booths: booths}
+      seats = Seat.all
+      if seats.present?
+        render json: {seats: seats}
       else
         render json: {err_msg: "該当する店舗が見つかりませんでした。"}
       end

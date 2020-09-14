@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   belongs_to :admin, optional: true
+  has_many :user_seats
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :us_email, presence: true, format: { with: VALID_EMAIL_REGEX }

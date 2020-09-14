@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_150054) do
+ActiveRecord::Schema.define(version: 2020_09_14_154849) do
 
   create_table "admins", force: :cascade do |t|
     t.string "ad_name"
@@ -44,6 +44,31 @@ ActiveRecord::Schema.define(version: 2020_09_13_150054) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "seats", force: :cascade do |t|
+    t.string "se_name"
+    t.integer "booth_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booth_id"], name: "index_seats_on_booth_id"
+  end
+
+  create_table "user_seats", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.time "usetime"
+    t.boolean "judge"
+    t.string "booth_price"
+    t.string "booth_type"
+    t.string "order_price"
+    t.string "order_number"
+    t.integer "booth_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booth_id"], name: "index_user_seats_on_booth_id"
+    t.index ["user_id"], name: "index_user_seats_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "us_full_name"
     t.string "us_email"
@@ -64,5 +89,8 @@ ActiveRecord::Schema.define(version: 2020_09_13_150054) do
 
   add_foreign_key "admins", "owners"
   add_foreign_key "booths", "admins"
+  add_foreign_key "seats", "booths"
+  add_foreign_key "user_seats", "booths"
+  add_foreign_key "user_seats", "users"
   add_foreign_key "users", "admins"
 end

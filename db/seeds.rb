@@ -39,3 +39,9 @@ Booth.create!(
   admin_id: 1,
 )
 puts 'ブースを作成しました。'
+
+Seat.create!(
+  se_name: '個室ブース',
+  booth_id: 1,
+)
+puts 'シートを作成しました。'

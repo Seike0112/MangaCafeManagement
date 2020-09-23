@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  his_price: MyString
+  his_usse_price_change: MyString
+  his_total_price: MyString
+  his_tax: 
+  his_start: 2020-09-20 10:55:50
+  his_end: 2020-09-20 10:55:50
+  his_usetime: MyString
+  his_bill_judge: false
+  his_usse_use_status: false
+  his_booth_price: MyString
+  his_booth_type: 
+  his_order_price: MyString
+  his_order_number: MyString
+
+two:
+  his_price: MyString
+  his_usse_price_change: MyString
+  his_total_price: MyString
+  his_tax: 
+  his_start: 2020-09-20 10:55:50
+  his_end: 2020-09-20 10:55:50
+  his_usetime: MyString
+  his_bill_judge: false
+  his_usse_use_status: false
+  his_booth_price: MyString
+  his_booth_type: 
+  his_order_price: MyString
+  his_order_number: MyString

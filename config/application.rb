@@ -24,6 +24,13 @@ module MangaCafeManagement
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
+    # DBの時間設定
+    config.active_record.default_timezone = :local
+    # デフォルトのロケールを日本（ja）に設定
+    config.i18n.default_locale = :ja
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
@@ -35,3 +42,4 @@ module MangaCafeManagement
     config.api_only = true
   end
 end
+

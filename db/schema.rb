@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_154849) do
 
   create_table "seats", force: :cascade do |t|
     t.string "se_name"
+    t.boolean "se_use_status"
     t.integer "booth_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,14 +54,20 @@ ActiveRecord::Schema.define(version: 2020_09_14_154849) do
   end
 
   create_table "user_seats", force: :cascade do |t|
+    t.string "us_price"
+    t.string "usse_price_change"
+    t.string "total_price"
+    t.float "tax", default: 1.08
     t.datetime "start"
     t.datetime "end"
-    t.time "usetime"
-    t.boolean "judge"
+    t.string "usetime"
+    t.boolean "bill_judge"
+    t.boolean "usse_use_status"
     t.string "booth_price"
     t.string "booth_type"
     t.string "order_price"
     t.string "order_number"
+    t.integer "seat_id"
     t.integer "booth_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -74,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_154849) do
     t.string "us_email"
     t.string "password_digest"
     t.string "us_kana"
+    t.string "us_price"
     t.string "us_job"
     t.string "us_age"
     t.string "us_sex"
